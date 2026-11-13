@@ -1,0 +1,267 @@
+<!--type="company"
+block="block/esp32_mechanical_arm.js"
+generator="generator/esp32_mechanical_arm.js"
+-->
+<script type="text/javascript" src="./block/esp32_mechanical_arm.js"></script>
+<script type="text/javascript" src="./generator/esp32_mechanical_arm.js"></script>
+
+<category id="esp_web_pro" name="网页编辑PRO" colour="270">
+
+    <block type="espdashpro_display_components">
+        <value name="Label">
+            <shadow type="text">
+                <field name="TEXT">温度</field>
+            </shadow>
+        </value>
+        <value name="unit">
+            <shadow type="text">
+                <field name="TEXT">℃</field>
+            </shadow>
+        </value>
+        <value name="value">
+            <shadow type="math_number">
+                <field name="NUM">20</field>
+            </shadow>
+        </value>
+    </block>
+
+    <block type="espdashpro_state_component">
+        <value name="Label">
+            <shadow type="text">
+                <field name="TEXT">系统状态</field>
+            </shadow>
+        </value>
+        <value name="value">
+            <shadow type="text">
+                <field name="TEXT">正常</field>
+            </shadow>
+        </value>
+    </block>
+
+    <block type="espdashpro_update_chart">
+        <value name="Label">
+            <shadow type="text">
+                <field name="TEXT">温度曲线</field>
+            </shadow>
+        </value>
+        <value name="abscissa">
+            <shadow type="text">
+                <field name="TEXT">mylistx</field>
+            </shadow>
+        </value>
+        <value name="ordinate">
+            <shadow type="text">
+                <field name="TEXT">mylisty</field>
+            </shadow>
+        </value>
+    </block>
+
+    <block type="espdashpro_add_statistics">
+        <value name="Statistic">
+            <shadow type="text">
+                <field name="TEXT">作者</field>
+            </shadow>
+        </value>
+        <value name="Value">
+            <shadow type="text">
+                <field name="TEXT">科易互动机器人</field>
+            </shadow>
+        </value>
+    </block>
+
+    <block type="espdashpro_display_components1">
+        <value name="Label">
+            <shadow type="text">
+                <field name="TEXT">卧室开关</field>
+            </shadow>
+        </value>
+        <value name="value">
+            <shadow type="math_number">
+                <field name="NUM">0</field>
+            </shadow>
+        </value>
+    </block>
+
+    <block type="espdashpro_get_component_value">
+        <value name="Label">
+            <shadow type="text">
+                <field name="TEXT">卧室开关</field>
+            </shadow>
+        </value>
+    </block>
+
+    <block type="espdashpro_get_joystick_value">
+        <value name="Label">
+            <shadow type="text">
+                <field name="TEXT">摇杆</field>
+            </shadow>
+        </value>
+    </block>
+
+    <block type="espdashpro_serial_print">
+        <field name="VAR">value</field>
+    </block>
+
+    <block type="espdashpro_set_title">
+        <value name="title">
+            <shadow type="text">
+                <field name="TEXT">科易互动机器人</field>
+            </shadow>
+        </value>
+    </block>
+
+    <block type="espdashpro_setting_permissions">
+        <value name="name">
+            <shadow type="text">
+                <field name="TEXT">keyes</field>
+            </shadow>
+        </value>
+        <value name="pass">
+            <shadow type="text">
+                <field name="TEXT">123456</field>
+            </shadow>
+        </value>
+    </block>
+
+    <block type="espdashpro_add_page">
+        <value name="page">
+            <shadow type="text">
+                <field name="TEXT">卧室</field>
+            </shadow>
+        </value>
+    </block>
+
+    <block type="espdashpro_set_component_page">
+        <field name="type">temp</field>
+        <field name="id">1</field>
+        <field name="page_id">1</field>
+    </block>
+</category>
+
+<category id="esp32_net" name="ESP32 网络" colour="20">
+    <block type="wifi_connect">
+        <value name="SSID">
+            <shadow type="text">
+                <field name="TEXT">ChinaNet_2.4G</field>
+            </shadow>
+        </value>
+        <value name="PASS">
+            <shadow type="text">
+                <field name="TEXT">ChinaNet@233</field>
+            </shadow>
+        </value>
+    </block>
+    <block type="wifi_get_ip"></block>
+</category>
+
+<category id="mechanicalArmESP32" name="机械手臂" colour="160">
+
+    <block type="arm_init">
+        <value name="PIN_BASE">
+            <shadow type="math_number">
+                <field name="NUM">16</field>
+            </shadow>
+        </value>
+        <value name="PIN_LEFT">
+            <shadow type="math_number">
+                <field name="NUM">17</field>
+            </shadow>
+        </value>
+        <value name="PIN_RIGHT">
+            <shadow type="math_number">
+                <field name="NUM">4</field>
+            </shadow>
+        </value>
+        <value name="PIN_GRIP">
+            <shadow type="math_number">
+                <field name="NUM">5</field>
+            </shadow>
+        </value>
+    </block>
+
+    <block type="arm_move">
+        <field name="JOINT">0</field>
+        <value name="ANGLE">
+            <shadow type="math_number">
+                <field name="NUM">90</field>
+            </shadow>
+        </value>
+        <field name="SPEED">20</field>
+    </block>
+    <block type="arm_follow_target">
+        <field name="JOINT">0</field>
+        <value name="TARGET">
+            <shadow type="math_number">
+                <field name="NUM">90</field>
+            </shadow>
+        </value>
+    </block>
+    <block type="arm_gripper">
+        <field name="GRIP">0</field>
+        <field name="SPEED">20</field>
+    </block>
+    <block type="arm_home">
+        <field name="SPEED">20</field>
+    </block>
+    <block type="arm_readjoint">
+        <field name="JOINT">0</field>
+    </block>
+
+    <block type="arm_pose">
+        <value name="ANGLE_BASE">
+            <shadow type="math_number">
+                <field name="NUM">90</field>
+            </shadow>
+        </value>
+        <value name="ANGLE_LEFT">
+            <shadow type="math_number">
+                <field name="NUM">60</field>
+            </shadow>
+        </value>
+        <value name="ANGLE_RIGHT">
+            <shadow type="math_number">
+                <field name="NUM">130</field>
+            </shadow>
+        </value>
+        <value name="ANGLE_GRIP">
+            <shadow type="math_number">
+                <field name="NUM">0</field>
+            </shadow>
+        </value>
+        <field name="SPEED">20</field>
+    </block>
+    <block type="arm_record"></block>
+    <block type="arm_play">
+        <field name="SPEED">20</field>
+    </block>
+    <block type="arm_clear"></block>
+    <block type="arm_posecount"></block>
+
+    <block type="joystick_init">
+        <value name="LX">
+            <shadow type="math_number"><field name="NUM">33</field></shadow>
+        </value>
+        <value name="LY">
+            <shadow type="math_number"><field name="NUM">32</field></shadow>
+        </value>
+        <value name="LBTN">
+            <shadow type="math_number"><field name="NUM">25</field></shadow>
+        </value>
+        <value name="RX">
+            <shadow type="math_number"><field name="NUM">13</field></shadow>
+        </value>
+        <value name="RY">
+            <shadow type="math_number"><field name="NUM">15</field></shadow>
+        </value>
+        <value name="RBTN">
+            <shadow type="math_number"><field name="NUM">12</field></shadow>
+        </value>
+    </block>
+    <block type="joystick_read">
+        <field name="SIDE">L</field>
+        <field name="AXIS">X</field>
+    </block>
+    <block type="joystick_button">
+        <field name="SIDE">L</field>
+    </block>
+</category>
