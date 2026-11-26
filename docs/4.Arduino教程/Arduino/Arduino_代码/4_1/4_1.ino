@@ -32,7 +32,6 @@ int RightServoAngle = 130; // 右关节舵机初始角度
 int GripperServoAngle = 0;  // 夹爪舵机初始角度
 
 void setup() {
-  Serial.begin(9600);
   // 设置左、右摇杆的引脚为输入模式  
   pinMode(left_X, INPUT);
   pinMode(left_Y, INPUT);

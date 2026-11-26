@@ -5,8 +5,8 @@
 
 // =============== WIFI配置 ===============
 // 设置WiFi名称和WiFi密码, ESP32 仅支持 2.4GHz 频段的无线网络  
-const char* ssid = "KEYES-WIFI"; // 替换为你自己的WiFi名称
-const char* password = "KEYES123456789"; // 替换为你自己的WiFi密码
+const char* ssid = "ChinaNet_2.4G"; // 替换为你自己的WiFi名称
+const char* password = "ChinaNet@233"; // 替换为你自己的WiFi密码
 
 WiFiServer server(80); // 将网页端口设置为80。你可以直接输入IP地址访问网页,无需输入端口号
 

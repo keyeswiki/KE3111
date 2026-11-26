@@ -35,7 +35,7 @@ void loop() {
   Serial.print(left_B_data);  // 打印左侧摇杆模块的按钮值
   Serial.print("    left X:");  // 打印字符串"    left X:"
   Serial.print(left_X_data);    // 打印左侧摇杆模块的X值
-  Serial.print("    left Y:");  // 打印字符串"    left X:"
+  Serial.print("    left Y:");  // 打印字符串"    left Y:"
   Serial.println(left_Y_data);  // 打印左侧摇杆模块的Y值
   
   Serial.print("right B:");  // 打印字符串"    right B:"

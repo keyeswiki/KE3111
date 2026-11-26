@@ -2,7 +2,6 @@
    :maxdepth: 3
    :caption: KE3111 Keyes 4自由度机械手臂 ESP32 学习套装
 
-   README.md
    docs/1.产品介绍
    docs/2.安装驱动/2.驱动安装（选读）
    docs/3.产品安装
