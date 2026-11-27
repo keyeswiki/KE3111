@@ -59,6 +59,7 @@ void setup() {
 }
 
 void loop() {
+  Serial.begin(115200); // 设置波特率为115200
   left_X_data = analogRead(left_X);   // 读取左侧摇杆X引脚的值
   left_Y_data = analogRead(left_Y);   // 读取左侧摇杆Y引脚的值
   left_B_data = digitalRead(left_B);  // 读取左侧摇杆B引脚的值

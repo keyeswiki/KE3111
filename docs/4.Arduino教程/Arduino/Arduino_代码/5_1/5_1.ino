@@ -39,6 +39,10 @@ int myservo4_attitude = 3;
 int data_start_bit = 1;
 int data_end_bit = 0;
 
+// 按钮边沿检测：记录上一次按钮状态，实现"按一下只触发一次"
+int right_B_last = 0; // 右侧摇杆按钮上一次状态
+int left_B_last = 0;  // 左侧摇杆按钮上一次状态
+
 void setup() {
   // 设置左、右摇杆的引脚为输入模式  
   pinMode(left_X, INPUT);
@@ -151,9 +155,12 @@ void gripper_Servo_Control() {
 // 2个摇杆模块控制机械手臂进行一系列动作，每次都可以按下右侧摇杆模块上的按钮进行保存舵机角度，
 // 多保存几次（最多可保存10次），按下左侧摇杆模块上的按钮对之前保存的动作进行回放。
 void attitude() {
+  // 保存姿态：右侧摇杆按钮
   if (right_B_data == 1) {
     delay(10);  // 消除摇杆的按钮抖动
-    if (right_B_data == 1) {
+    right_B_data = digitalRead(right_B);  // 延时后重新读引脚再判断
+    if (right_B_data == 1 && right_B_last == 0) {  // 边沿检测：按下且上次是松开的，按一下只存一次
+      right_B_last = 1;  // 标记已按下，按住不放不会重复保存
       attitude_data[myservo1_attitude][data_start_bit] = myservo1.read();
       delay(100);
       attitude_data[myservo2_attitude][data_start_bit] = myservo2.read();
@@ -166,10 +173,16 @@ void attitude() {
       data_end_bit = data_start_bit;
       if (data_start_bit > 10) data_start_bit = 10;
     }
+  } else {
+    right_B_last = 0;  // 松手后复位，下次按下才能再保存
   }
+
+  // 回放动作：左侧摇杆按钮
   if (left_B_data == 1) {
     delay(10);
-    if (left_B_data == 1) {
+    left_B_data = digitalRead(left_B);  // 延时后重新读引脚再判断
+    if (left_B_data == 1 && left_B_last == 0) {  // 边沿检测：按下且上次是松开的，按一下只回放一次
+      left_B_last = 1;  // 标记已按下，按住不放不会重复回放
       data_start_bit = 1;
       BaseServoAngle = myservo1.read();
       LeftServoAngle = myservo2.read();
@@ -232,7 +245,9 @@ void attitude() {
             GripperServoAngle--;
           }
         }
-      }  
+      }
     }
+  } else {
+    left_B_last = 0;  // 松手后复位，下次按下才能再回放
   }
 }

@@ -14,8 +14,9 @@ void loop() {
       myservo.write(angle); // 转动到angle角度
       delay(15);  // 等待一会,以免转得太快
    }
-   for (uint8_t angle = 180; angle >= 0; angle--) { // 从180到0度
+   for (uint8_t angle = 180; angle > 0; angle--) { // 从180到1度
       myservo.write(angle); // 转动到angle角度
       delay(15);
    }
+   myservo.write(0);  // 补上最终角度0度
 } 
